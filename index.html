@@ -73,6 +73,7 @@ const answers=[
 ["Power bank",["power bank","bateria portatil","batería portátil","cargador portatil","cargador portátil"]],
 ["Bolsa de playa",["bolsa de playa"]]
 ];
+if(new URLSearchParams(location.search).get("reset")==="1"){localStorage.removeItem("gapTourismoUsed");history.replaceState({},document.title,location.pathname)}
 let used=JSON.parse(localStorage.getItem("gapTourismoUsed")||"[]");
 const norm=s=>s.toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g,"").trim();
 function findAnswer(text){const n=norm(text);return answers.findIndex(([l,vars])=>vars.some(v=>n===norm(v)||n.includes(norm(v))));}
