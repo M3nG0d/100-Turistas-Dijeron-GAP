@@ -23,7 +23,7 @@ footer{margin-top:14px;background:var(--purple);color:#fff;border-radius:28px 28
 .modal{position:fixed;inset:0;background:#2b095ecc;display:none;place-items:center;z-index:20}.modal.show{display:grid}.modal-card{width:min(560px,90vw);background:#fff;border-radius:26px;padding:30px;text-align:center}.modal-card h3{font-size:34px;margin:0 0 10px;color:var(--purple)}.modal-card p{font-size:19px}.close{background:var(--purple);color:#fff;padding:12px 24px}
 @media(max-width:1000px){.board{grid-template-columns:repeat(5,1fr)}.one{font-size:72px}.said{font-size:28px}.question{font-size:28px}}
 @media(max-width:650px){.wrap{width:94vw}.logo{width:220px}.event{display:none}.topband{gap:12px}.one{font-size:58px}.said{font-size:22px}.greenbar{font-size:18px}.game{padding:18px}.question{font-size:24px}.inputrow{flex-direction:column}.check{width:100%}.board{grid-template-columns:repeat(3,1fr)}.rules{grid-template-columns:1fr}.rule{border-right:0;border-bottom:1px solid #ddd7e6}footer{font-size:13px;display:block;text-align:center}}
-</style>
+.admin-reset{position:fixed;right:14px;bottom:14px;z-index:30;background:#fff;color:var(--purple);border:1px solid #d9cfea;border-radius:10px;padding:8px 12px;font-size:12px;font-weight:800;opacity:.55;box-shadow:0 4px 15px #0001}.admin-reset:hover{opacity:1;background:#f6f1fb}@media(max-width:650px){.admin-reset{bottom:8px;right:8px}}</style>
 </head>
 <body>
 <div class="wrap">
@@ -37,6 +37,7 @@ footer{margin-top:14px;background:var(--purple);color:#fff;border-radius:28px 28
 <div class="board" id="board"></div></section>
 <div class="rules"><div class="rule r1"><b>🏆 Top 10</b>Ganas un <strong>premio completo</strong>.</div><div class="rule r2"><b>🎁 Respuestas 11–30</b>Ganas un <strong>premio menor</strong>.</div><div class="rule r3"><b>👥 Fuera de la lista</b><strong>¡Gracias por participar!</strong></div></div>
 </main>
+<button id="adminReset" class="admin-reset" title="Reiniciar dinámica">↻ Reiniciar</button>
 <footer><div>✈️ ¡Participa, diviértete y celebra <span class="footerGreen">el turismo con nosotros!</span></div><div>Aeropuerto Internacional de Puerto Vallarta · <b>PVR</b></div></footer>
 </div>
 <div class="modal" id="modal"><div class="modal-card"><h3 id="modalTitle"></h3><p id="modalText"></p><button class="close" onclick="closeModal()">CONTINUAR</button></div></div>
@@ -83,5 +84,6 @@ function showModal(t,p){document.getElementById("modalTitle").textContent=t;docu
 function closeModal(){document.getElementById("modal").classList.remove("show")}
 function check(){const inp=document.getElementById("answer"),v=inp.value.trim();if(!v)return setMessage("Escribe una respuesta primero.");const i=findAnswer(v);if(i<0){setMessage("❌ Gracias por participar. Esa respuesta no está en nuestro Top 30.","no");showModal("¡Gracias por participar!","No encontramos esa respuesta entre las 30 seleccionadas.");return}if(used.includes(i)){setMessage("🔒 Esa respuesta ya fue descubierta. Prueba con otra.","small");showModal("Respuesta ya descubierta","Esa opción ya fue mencionada. ¡Prueba otra!");return}used.push(i);localStorage.setItem("gapTourismoUsed_activacion_2026",JSON.stringify(used));render();if(i<10){setMessage("🏆 ¡RESPUESTA TOP! PREMIO COMPLETO.","ok");showModal("🏆 ¡PREMIO COMPLETO!","Tu respuesta está dentro del Top 10.");}else{setMessage("🎁 ¡BUENA RESPUESTA! PREMIO MENOR.","small");showModal("🎁 ¡PREMIO MENOR!","Tu respuesta está entre las posiciones 11 y 30.");}inp.value=""}
 document.getElementById("check").onclick=check;document.getElementById("answer").addEventListener("keydown",e=>{if(e.key==="Enter")check()});render();
+document.getElementById("adminReset").addEventListener("click",()=>{if(confirm("¿Reiniciar la dinámica? Se ocultarán nuevamente las 30 respuestas.")){used=[];localStorage.removeItem("gapTourismoUsed");render();setMessage("Dinámica reiniciada. Todas las respuestas están ocultas.","ok");document.getElementById("answer").value="";document.getElementById("answer").focus();}});
 </script></body>
 </html>
