@@ -4,64 +4,42 @@
 <meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
 <title>100 Turistas Dijeron | GAP PVR</title>
 <style>
-:root{--p:#4b1593;--p2:#6d2bb7;--g:#78bd16;--o:#f7931d;--ink:#31115e;--soft:#f5f2fa;--white:#fff}
-*{box-sizing:border-box}body{margin:0;font-family:Arial,Helvetica,sans-serif;color:var(--ink);background:linear-gradient(135deg,#f6f5f9 0 45%,#e7f5fb 100%);min-height:100vh}
-body:before{content:"";position:fixed;inset:0;background:radial-gradient(circle at 85% 10%,#ffffffaa,transparent 32%),linear-gradient(125deg,transparent 0 45%,#ffffff55 45% 50%,transparent 50%);pointer-events:none}
-.wrap{width:min(1400px,96vw);margin:auto;padding:18px 0 28px}
-header{display:flex;align-items:center;justify-content:space-between;gap:20px;margin-bottom:14px}
-.brand{display:flex;align-items:center;gap:16px}.logo{width:280px;height:auto;display:block}.brand h1,.strap{display:none}.event{text-align:right}.event b{color:var(--p);font-size:20px}.event span{display:block;color:#62841c;font-weight:800;margin-top:5px}
-.hero{display:grid;grid-template-columns:1.1fr .9fr;gap:18px;align-items:stretch}
-.panel{background:#ffffffdd;border:1px solid #fff;border-radius:26px;box-shadow:0 20px 50px #38106918;backdrop-filter:blur(8px)}
-.left{padding:28px}.kicker{display:inline-flex;background:var(--o);color:#fff;padding:8px 18px;border-radius:30px;font-weight:900;font-size:18px}.title{font-size:58px;line-height:.92;margin:16px 0 10px;font-weight:950;letter-spacing:-2px}.title span{color:var(--p)}.celebrate{display:inline-block;background:var(--g);color:#fff;font-size:21px;font-weight:900;padding:10px 20px;border-radius:12px}
-.game-label{margin-top:30px;font-size:18px;font-weight:900}.question{font-size:33px;font-weight:900;line-height:1.05;margin:10px 0 18px}
-.input-row{display:flex;gap:12px}.input-row input{flex:1;min-width:0;border:2px solid #d9d0e9;border-radius:16px;padding:16px;font-size:20px;outline:0}.input-row input:focus{border-color:var(--p2)}button{border:0;border-radius:16px;padding:15px 24px;font-weight:900;font-size:18px;cursor:pointer}.check{background:var(--g);color:#fff;min-width:160px}.message{min-height:58px;margin-top:14px;border-radius:16px;padding:14px;text-align:center;font-weight:900;font-size:18px;background:var(--soft)}.ok{background:#ebf8db;color:#357c0b}.small{background:#fff3d6;color:#855400}.no{background:#fdecec;color:#b22626}
-.side{padding:20px;display:flex;flex-direction:column;gap:14px}.tourists{position:relative;min-height:230px;border-radius:22px;overflow:hidden;background:linear-gradient(140deg,#d8f0fb,#f8fbfd 65%)}.tourists:after{content:"🌴";position:absolute;right:12px;bottom:0;font-size:105px;opacity:.7}.tour-copy{position:relative;z-index:2;padding:22px}.tour-copy .big{font-size:54px;font-weight:1000;color:var(--o);line-height:.85}.tour-copy .sub{font-size:30px;font-weight:950;color:var(--p);max-width:310px;margin-top:8px}.badge{display:inline-block;margin-top:16px;background:var(--p);color:#fff;padding:10px 16px;border-radius:999px;font-weight:900}
-.board-title{display:flex;justify-content:space-between;align-items:center}.board-title h2{margin:0;font-size:21px}.count{background:#edf6df;color:#4c7d10;padding:7px 11px;border-radius:999px;font-weight:900;font-size:13px}
-.board{display:grid;grid-template-columns:repeat(5,1fr);gap:10px}.slot{min-height:66px;border-radius:14px;background:#eee9f7;border:1px solid #ddd5ea;display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center;font-weight:900;color:#9b8cad}.slot .n{font-size:13px}.slot .a{display:none}.slot.open{background:#f4fbe9;border-color:#cde7a5;color:#4d7c10}.slot.open .a{display:block;font-size:14px;margin-top:3px}.slot.top{box-shadow:inset 0 -4px 0 var(--o)}.rules{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-top:4px}.rule{background:#fff;border:1px solid #eee;border-radius:16px;padding:14px;font-weight:800;line-height:1.15}.rule b{display:block;font-size:14px}.r1 b{color:var(--p)}.r2 b{color:var(--g)}.r3 b{color:#666}
-footer{margin-top:14px;background:var(--p);color:#fff;border-radius:22px;padding:14px 20px;display:flex;justify-content:space-between;align-items:center;font-weight:800}.footer-green{color:#a4d638}
-.modal{position:fixed;inset:0;background:#2b095ecc;display:none;place-items:center;z-index:10}.modal.show{display:grid}.modal-card{width:min(560px,90vw);background:#fff;border-radius:28px;padding:30px;text-align:center;box-shadow:0 30px 80px #0005}.modal-card h3{font-size:34px;margin:0 0 10px;color:var(--p)}.modal-card p{font-size:19px;margin:6px 0 20px}.close{background:var(--p);color:#fff}
-@media(max-width:1000px){.hero{grid-template-columns:1fr}.title{font-size:48px}.side{display:none}.board{grid-template-columns:repeat(5,1fr)}}
-@media(max-width:650px){.wrap{width:94vw}.event{display:none}.title{font-size:40px}.question{font-size:26px}.input-row{flex-direction:column}.check{width:100%}.board{grid-template-columns:repeat(3,1fr)}.rules{grid-template-columns:1fr}.brand h1{font-size:20px}}
+:root{--purple:#4b178b;--purple2:#6b2bb4;--green:#72b915;--orange:#f28a16;--ink:#3d176e}
+*{box-sizing:border-box}html,body{margin:0;min-height:100%;font-family:Arial,Helvetica,sans-serif;color:var(--ink)}
+body{background:linear-gradient(120deg,#eef8f7,#fff 42%,#edf7fb);overflow-x:hidden}
+body:before{content:"";position:fixed;inset:0;z-index:-2;background:radial-gradient(circle at 10% 75%,#b9df7d55 0 10%,transparent 27%),radial-gradient(circle at 95% 80%,#73b91c33 0 9%,transparent 26%),linear-gradient(135deg,transparent 0 62%,#d9eef8 62% 100%)}
+.wrap{width:min(1500px,96vw);margin:auto;padding:16px 0 22px}
+header{display:flex;justify-content:space-between;align-items:center;gap:20px;padding:4px 8px 14px}.logo{width:285px;height:auto;display:block}
+.event{text-align:right}.date{font-weight:900;color:var(--purple);font-size:22px}.world{font-weight:950;color:var(--purple);font-size:30px;line-height:.95}.pv{color:var(--green);font-weight:900;font-size:18px;margin-top:7px}
+.topband{display:flex;align-items:center;justify-content:center;gap:24px;margin:2px 0 14px}.one{font-size:96px;font-weight:1000;color:var(--orange);line-height:.8}.said{font-size:34px;font-weight:950;color:var(--purple);line-height:.95}.said span{display:block}.bubble{border:3px solid var(--purple);border-radius:4px 24px 24px 24px;padding:10px 22px;position:relative}.bubble:after{content:"";position:absolute;left:22px;bottom:-20px;border:10px solid transparent;border-top-color:var(--purple);border-left-color:var(--purple)}
+.greenbar{width:max-content;margin:0 auto 18px;background:var(--green);color:#fff;border-radius:10px;padding:10px 28px;font-size:22px;font-weight:950}
+.game{background:#ffffffed;border-radius:34px;box-shadow:0 18px 50px #32105b20;padding:24px 28px 22px;border:1px solid #fff}
+.questionrow{display:flex;align-items:center;justify-content:center;gap:16px}.case{font-size:50px}.question{font-size:34px;font-weight:950;line-height:1.05}.question span{color:var(--green)}
+.inputrow{display:flex;gap:12px;max-width:900px;margin:18px auto 14px}.inputrow input{flex:1;border:2px solid #d8d0e5;border-radius:14px;padding:16px 18px;font-size:21px;outline:0}.inputrow input:focus{border-color:var(--purple2)}button{border:0;border-radius:13px;font-weight:950;font-size:18px;cursor:pointer}.check{background:var(--green);color:#fff;padding:15px 28px;min-width:190px}
+.message{min-height:42px;text-align:center;padding:9px;border-radius:12px;font-weight:900;font-size:17px;background:#f3f0f7}.ok{background:#eaf7dc;color:#39790a}.small{background:#fff1d2;color:#865500}.no{background:#fde9e9;color:#a92525}
+.board{display:grid;grid-template-columns:repeat(10,1fr);gap:8px;margin-top:16px}.slot{height:66px;border-radius:12px;background:#eeeaf5;border:1px solid #ded5e9;display:flex;align-items:center;justify-content:center;flex-direction:column;color:#9b8cad;font-weight:900}.slot .n{font-size:14px}.slot .a{display:none}.slot.open{background:#f0f8e5;border-color:#cce3a7;color:#4b7d0c}.slot.open .a{display:block;font-size:14px;margin-top:3px}.slot.top{box-shadow:inset 0 -4px 0 var(--orange)}
+.rules{display:grid;grid-template-columns:1fr 1fr 1fr;margin-top:16px;border-radius:20px;overflow:hidden;background:#fff;box-shadow:0 8px 24px #32105b12}.rule{padding:16px 20px;border-right:1px solid #ddd7e6;font-size:16px;line-height:1.2}.rule:last-child{border:0}.rule b{display:block;font-size:18px;margin-bottom:4px}.r1 b,.r2 b{color:var(--purple)}.r3 b{color:var(--green)}
+footer{margin-top:14px;background:var(--purple);color:#fff;border-radius:28px 28px 0 0;padding:16px 24px;display:flex;justify-content:space-between;align-items:center;font-size:16px;font-weight:800}.footerGreen{color:#9ed329}
+.modal{position:fixed;inset:0;background:#2b095ecc;display:none;place-items:center;z-index:20}.modal.show{display:grid}.modal-card{width:min(560px,90vw);background:#fff;border-radius:26px;padding:30px;text-align:center}.modal-card h3{font-size:34px;margin:0 0 10px;color:var(--purple)}.modal-card p{font-size:19px}.close{background:var(--purple);color:#fff;padding:12px 24px}
+@media(max-width:1000px){.board{grid-template-columns:repeat(5,1fr)}.one{font-size:72px}.said{font-size:28px}.question{font-size:28px}}
+@media(max-width:650px){.wrap{width:94vw}.logo{width:220px}.event{display:none}.topband{gap:12px}.one{font-size:58px}.said{font-size:22px}.greenbar{font-size:18px}.game{padding:18px}.question{font-size:24px}.inputrow{flex-direction:column}.check{width:100%}.board{grid-template-columns:repeat(3,1fr)}.rules{grid-template-columns:1fr}.rule{border-right:0;border-bottom:1px solid #ddd7e6}footer{font-size:13px;display:block;text-align:center}}
 </style>
 </head>
 <body>
 <div class="wrap">
-<header>
-  <div class="brand"><img class="logo" src="assets/gap-logo.png" alt="Grupo Aeroportuario del Pacífico"></div>
-  <div class="event"><b>27 DE SEPTIEMBRE</b><span>DÍA MUNDIAL DEL TURISMO · PUERTO VALLARTA</span></div>
-</header>
-
-<section class="hero">
-<div class="panel left">
-  <div class="kicker">27 DE SEPTIEMBRE</div>
-  <div class="title">DÍA MUNDIAL<br>DEL <span>TURISMO</span></div>
-  <div class="celebrate">¡Celebremos viajando!</div>
-  <div class="game-label">🌎 PARTICIPA EN NUESTRA DINÁMICA</div>
-  <div class="question">¿Qué no puede faltar en unas vacaciones?</div>
-  <div class="input-row"><input id="answer" placeholder="Escribe tu respuesta aquí..." autocomplete="off"><button class="check" id="check">COMPROBAR →</button></div>
-  <div id="message" class="message">Descubre una de las 30 respuestas de nuestros turistas.</div>
+<header><img class="logo" src="assets/gap-logo.png" alt="Grupo Aeroportuario del Pacífico"><div class="event"><div class="date">27 DE SEPTIEMBRE</div><div class="world">DÍA MUNDIAL<br>DEL TURISMO</div><div class="pv">PUERTO VALLARTA</div></div></header>
+<main>
+<div class="topband"><div class="one">100</div><div class="bubble"><div class="said"><span>turistas</span><span>DIJERON...</span></div></div></div>
+<div class="greenbar">¡Celebremos viajando!</div>
+<section class="game"><div class="questionrow"><div class="case">🧳</div><div class="question">¿Qué no puede faltar<br>en unas <span>vacaciones?</span></div></div>
+<div class="inputrow"><input id="answer" autocomplete="off" placeholder="Escribe tu respuesta aquí..."><button class="check" id="check">COMPROBAR →</button></div>
+<div id="message" class="message">Descubre una de las 30 respuestas de nuestros turistas.</div>
+<div class="board" id="board"></div></section>
+<div class="rules"><div class="rule r1"><b>🏆 Top 10</b>Ganas un <strong>premio completo</strong>.</div><div class="rule r2"><b>🎁 Respuestas 11–30</b>Ganas un <strong>premio menor</strong>.</div><div class="rule r3"><b>👥 Fuera de la lista</b><strong>¡Gracias por participar!</strong></div></div>
+</main>
+<footer><div>✈️ ¡Participa, diviértete y celebra <span class="footerGreen">el turismo con nosotros!</span></div><div>Aeropuerto Internacional de Puerto Vallarta · <b>PVR</b></div></footer>
 </div>
-
-<div class="panel side">
-  <div class="tourists"><div class="tour-copy"><div class="big">100</div><div class="sub">turistas<br>dijeron...</div><div class="badge">¡Ven vestido de turista!</div></div></div>
-  <div class="board-title"><h2>🔒 Respuestas ocultas</h2><div class="count" id="count">0 / 30 descubiertas</div></div>
-  <div class="board" id="board"></div>
-</div>
-</section>
-
-<div class="panel" style="padding:18px;margin-top:18px">
-<div class="rules">
- <div class="rule r1"><b>🏆 TOP 10 · PREMIO COMPLETO</b>Respuesta descubierta dentro de las 10 principales.</div>
- <div class="rule r2"><b>🎁 RESPUESTAS 11–30 · PREMIO MENOR</b>Respuesta válida, pero fuera del Top 10.</div>
- <div class="rule r3"><b>❌ FUERA DE LA LISTA</b>Gracias por participar. ¡Sigue disfrutando tu viaje!</div>
-</div>
-</div>
-
-<footer><div>✈️ ¡Participa, diviértete y celebra <span class="footer-green">el turismo con nosotros!</span></div><div>Aeropuerto Internacional de Puerto Vallarta · <b>PVR</b></div></footer>
-</div>
-
 <div class="modal" id="modal"><div class="modal-card"><h3 id="modalTitle"></h3><p id="modalText"></p><button class="close" onclick="closeModal()">CONTINUAR</button></div></div>
-
 <script>
 const answers=[
 ["Pasaporte / identificación",["pasaporte","identificacion","identificación","ine","documentos","documento"]],
@@ -98,22 +76,11 @@ const answers=[
 let used=JSON.parse(localStorage.getItem("gapTourismoUsed")||"[]");
 const norm=s=>s.toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g,"").trim();
 function findAnswer(text){const n=norm(text);return answers.findIndex(([l,vars])=>vars.some(v=>n===norm(v)||n.includes(norm(v))));}
-function render(){const b=document.getElementById("board");b.innerHTML="";answers.forEach((a,i)=>{const el=document.createElement("div");el.className="slot"+(used.includes(i)?" open":"")+(i<10?" top":"");el.innerHTML='<div class="n">'+(i+1)+'</div><div class="a">'+(used.includes(i)?a[0]:"🔒")+'</div>';b.appendChild(el)});document.getElementById("count").textContent=used.length+" / 30 descubiertas";}
+function render(){const b=document.getElementById("board");b.innerHTML="";answers.forEach((a,i)=>{const el=document.createElement("div");el.className="slot"+(used.includes(i)?" open":"")+(i<10?" top":"");el.innerHTML='<div class="n">'+(i+1)+'</div><div class="a">'+(used.includes(i)?a[0]:"🔒")+'</div>';b.appendChild(el)})}
 function setMessage(t,c=""){const m=document.getElementById("message");m.className="message "+c;m.textContent=t}
 function showModal(t,p){document.getElementById("modalTitle").textContent=t;document.getElementById("modalText").textContent=p;document.getElementById("modal").classList.add("show")}
 function closeModal(){document.getElementById("modal").classList.remove("show")}
-function check(){
- const inp=document.getElementById("answer");const v=inp.value.trim();if(!v){setMessage("Escribe una respuesta primero.");return}
- const i=findAnswer(v);
- if(i<0){setMessage("❌ Gracias por participar. Esa respuesta no está en nuestro Top 30.","no");showModal("¡Gracias por participar!","No encontramos esa respuesta entre las 30 seleccionadas.");return}
- if(used.includes(i)){setMessage("🔒 Esa respuesta ya fue descubierta. Prueba con otra.","small");showModal("Respuesta ya descubierta","Esa opción ya fue mencionada por otro turista. ¡Prueba otra!");return}
- used.push(i);localStorage.setItem("gapTourismoUsed",JSON.stringify(used));render();
- if(i<10){setMessage("🏆 ¡RESPUESTA TOP! PREMIO COMPLETO.","ok");showModal("🏆 ¡PREMIO COMPLETO!","Tu respuesta está dentro del Top 10 de nuestros turistas.");}
- else {setMessage("🎁 ¡BUENA RESPUESTA! PREMIO MENOR.","small");showModal("🎁 ¡PREMIO MENOR!","Tu respuesta está entre las posiciones 11 y 30.");}
- inp.value="";
-}
-document.getElementById("check").onclick=check;document.getElementById("answer").addEventListener("keydown",e=>{if(e.key==="Enter")check()});
-render();
-</script>
-</body>
+function check(){const inp=document.getElementById("answer"),v=inp.value.trim();if(!v)return setMessage("Escribe una respuesta primero.");const i=findAnswer(v);if(i<0){setMessage("❌ Gracias por participar. Esa respuesta no está en nuestro Top 30.","no");showModal("¡Gracias por participar!","No encontramos esa respuesta entre las 30 seleccionadas.");return}if(used.includes(i)){setMessage("🔒 Esa respuesta ya fue descubierta. Prueba con otra.","small");showModal("Respuesta ya descubierta","Esa opción ya fue mencionada. ¡Prueba otra!");return}used.push(i);localStorage.setItem("gapTourismoUsed",JSON.stringify(used));render();if(i<10){setMessage("🏆 ¡RESPUESTA TOP! PREMIO COMPLETO.","ok");showModal("🏆 ¡PREMIO COMPLETO!","Tu respuesta está dentro del Top 10.");}else{setMessage("🎁 ¡BUENA RESPUESTA! PREMIO MENOR.","small");showModal("🎁 ¡PREMIO MENOR!","Tu respuesta está entre las posiciones 11 y 30.");}inp.value=""}
+document.getElementById("check").onclick=check;document.getElementById("answer").addEventListener("keydown",e=>{if(e.key==="Enter")check()});render();
+</script></body>
 </html>
